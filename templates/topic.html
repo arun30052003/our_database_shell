@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topics</title>
+    <style>
+        div:hover
+        {
+            cursor: pointer;
+            color: chocolate;
+            font-size: 25px;
+        }
+        th
+        {
+            background-color: rgb(20, 38, 38);
+            color: beige;
+        }
+        td:hover
+        {
+            cursor: pointer;
+            color:rgb(0, 68, 255);
+        }
+        table:hover
+        {
+            box-shadow: 0 0 5px black;
+            cursor: pointer;
+            color: rgb(255, 4, 4);
+            background-color: wheat;
+        }
+        #one
+        {
+            padding: 15px 0 0 0;
+        }
+        table
+        {
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div>
+            <h1><u>TOPIC_TABLE</u>:-</h1>
+        <table border="3px" cellpadding="10px" cellspacing="10px">
+            <tr>
+                <th>TOPIC_NAME</th>
+            </tr>
+            {% for to in topic %}
+                <tr>
+                    <td>{{to.topic_name}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        </div>
+        <div id="one">
+            <a href="{% url 'webpage' %}">Webpage_Table</a>
+        </div>
+    </center>
+</body>
+</html>
