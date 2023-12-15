@@ -42,15 +42,15 @@ def insert_webpage(request):
     return render(request,'webpage.html',d)
 
 def insert_accessrecord(request):
-    wo=input('Enter name')
+    pk=int(input('Enter pk for webpage'))
     ad=input('Enter date')
     aa=input('Enter author')
 
-    WO=Webpage.objects.get(name=wo)
+    WO=Webpage.objects.get(pk=pk)
+
     NAO=AccessRecord.objects.get_or_create(name=WO,date=ad,author=aa)[0]
     NAO.save()
 
     QLTO=AccessRecord.objects.all()
     d={'accessrecord':QLTO}
     return render(request,'accessrecord.html',d)
-
