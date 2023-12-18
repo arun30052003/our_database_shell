@@ -2,19 +2,35 @@ from django.shortcuts import render
 
 # Create your views here.
 from app.models import *
-
+from django.db.models.functions import Length
 def topic(request):
     QLTO=Topic.objects.all()
+    QLTO=Topic.objects.all().order_by('topic_name')
+    QLTO=Topic.objects.all().order_by('-topic_name')
+    QLTO=Topic.objects.all().order_by(Length('topic_name'))
+    QLTO=Topic.objects.all().order_by(Length('topic_name').desc())
+    QLTO=Topic.objects.all().order_by('topic_name')[::]
     d={'topic':QLTO}
     return render(request,'topic.html',d)
 
 def webpage(request):
     QLTO=Webpage.objects.all()
+    QLTO=Webpage.objects.all().order_by('name')
+    QLTO=Webpage.objects.all().order_by('-name')
+    QLTO=Webpage.objects.all().order_by(Length('name'))
+    QLTO=Webpage.objects.all().order_by(Length('name').desc())
+    QLTO=Webpage.objects.all().order_by('name')[::]
     d={'webpage':QLTO}
+    
     return render(request,'webpage.html',d)
 
 def accessrecord(request):
     QLTO=AccessRecord.objects.all()
+    QLTO=AccessRecord.objects.all().order_by('author')
+    QLTO=AccessRecord.objects.all().order_by('-author')
+    QLTO=AccessRecord.objects.all().order_by(Length('author'))
+    QLTO=AccessRecord.objects.all().order_by(Length('author').desc())
+    QLTO=AccessRecord.objects.all().order_by('author')[::]
     d={'accessrecord':QLTO}
     return render(request,'accessrecord.html',d)
 
